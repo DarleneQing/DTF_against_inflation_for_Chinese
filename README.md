@@ -5,5 +5,5 @@ This is the group assignment of Digital Tools for Finance from University of Zur
 Collaboration with:
 
 
-##Research Question:
+## Research Question:
 What type of assets can provide effective protection against inflation for Chinese people?
