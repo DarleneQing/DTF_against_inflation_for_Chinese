@@ -43,6 +43,10 @@ Then navigate to the working directory to the file that saves your cloned git re
 ```bash
 cd <Disk:\your_git_clone_file_path>  #(Replace the <Disk:\your_git_clone_file_path> of your choice)
 ```
+In case of Mac:
+```bash
+cd <path/to/directory>
+```
 
 Then, start the Docker container:
 ```bash
@@ -60,6 +64,8 @@ Open the file 'Hedge_Against_inflation_Tool.ipynb' in Jupyter Notebook. This not
 ```bash
 pip install -r requirements.txt
 ```
+*(If you're using Python 3, use 'pip3' instead of 'pip')*
+
 2. Start the jupyter notebook under the same directory
 ```bash
 jupyter notebook --port=8888
