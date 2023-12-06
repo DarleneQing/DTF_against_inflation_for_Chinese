@@ -52,7 +52,7 @@ docker run -p 8888:8888 my_bokeh
 Now your Jupyter notebook server should start running, you can access it at: 'http://localhost:8888'
 
 ### Exploring the Visualization Tool
-Open the file Hedge_Against_inflation_Tool.ipynb in Jupyter Notebook. This notebook is your main interface for using our visualization tool. Follow the embedded comments and instructions to start to know more about our research. Enjoy!
+Open the file 'Hedge_Against_inflation_Tool.ipynb' in Jupyter Notebook. This notebook is your main interface for using our visualization tool. Follow the embedded comments and instructions to start to know more about our research. Enjoy!
 
 ### Troubleshooting Docker Image Issues
 **Solution One**
@@ -66,7 +66,7 @@ jupyter notebook --port=8888
 ```
 3. Open the file 'Hedge_Against_inflation_Tool.ipynb' in jupyter botebook.
 
-**Solution Two**
+**Solution Two** <br>
 *In case your jupyter notebook is still not working* <br>
 1. Open the DTF_against_inflation_for_Chinese folder in your preferred Python IDE.
 2. Install necessary dependencies. Open a terminal, run
