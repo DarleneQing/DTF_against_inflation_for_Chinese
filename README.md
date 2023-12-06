@@ -25,7 +25,7 @@ jupyter notebook --version
 docker --version
 ```
 
-**Installation Guide**
+**Installation Guide** <br>
 If you need to install or update these tools, please refer to the following links:
 - [For python compiler](https://www.python.org/downloads/)
 - [For Jupyter Notebook](https://jupyter.org/install)
