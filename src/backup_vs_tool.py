@@ -327,26 +327,51 @@ div3 = Div(text="""
 """, width=1000, align="center", margin=15, )
 
 
-def create_source_proportion(asset_tag, inflation_tag):
-    merged_df = pd.merge(pct_asset, pct_inflation.drop(columns=['Time']), on=['Year', 'Quarter'], how='inner')
-    merged_df['Datetime'] = merged_df['Year'].astype(str) + merged_df['Quarter']
-    inf = merged_df[inflation_tag]
-    datas = []
+def create_source_proportion(order_tag, asset_tag, inflation_tag):
+    if order_tag == 'First Order':
+        merged_df = pd.merge(df_asset, df_inflation.drop(columns=['Time']), on=['Year', 'Quarter'], how='inner')
+        merged_df['Datetime'] = merged_df['Year'].astype(str) + merged_df['Quarter']
+        merged_df.columns = ['Time', 'House_Change', 'Gold_Change', 'Fixed_deposit_Change', 'Shanghai_stock_Change',
+                             'Gover_sixm_Change', 'Gover_fivey_Change', 'Gover_teny_Change', 'Year', 'Quarter',
+                             'Core_CPI_Change','Headline_CPI_Change','Core_inflation_Change','Headline_inflation_Change', 'Datetime']
+        inf = merged_df[inflation_tag]
+        datas = []
 
-    if asset_tag == "ALL":
-        for i, asset in enumerate(asset_pct):
-            prop = merged_df[[asset, 'Datetime']].copy()
-            prop['Proportion'] = prop[asset] / inf
-            prop = prop.drop(columns=[asset])
-            prop['text'] = 'The proportion of all assets vs. ' + inflation_tag
-            prop['label'] = asset
-            datas.append(ColumnDataSource(prop))
-    else:
-        merged_df['Proportion'] = merged_df[asset_tag] / merged_df[inflation_tag].replace({0: np.nan})
-        data = merged_df[['Datetime', 'Proportion']].copy()
-        data['text'] = 'The proportion of ' + asset_tag + ' and ' + inflation_tag
-        data['label'] = asset_tag
-        datas.append(ColumnDataSource(data))
+        if asset_tag == "ALL":
+            for i, asset in enumerate(asset_pct):
+                prop = merged_df[[asset, 'Datetime']].copy()
+                prop['Proportion'] = prop[asset] / inf
+                prop = prop.drop(columns=[asset])
+                prop['text'] = 'The proportion of all assets vs. '  + inflation_tag
+                prop['label'] = asset
+                datas.append(ColumnDataSource(prop))
+        else:
+            merged_df['Proportion'] = merged_df[asset_tag] / merged_df[inflation_tag].replace({0: np.nan})
+            data = merged_df[['Datetime', 'Proportion']].copy()
+            data['text'] = 'The proportion of ' + asset_tag + ' and ' + inflation_tag
+            data['label'] = asset_tag
+            datas.append(ColumnDataSource(data))
+
+    if order_tag == 'Second Order':
+        merged_df2 = pd.merge(pct_asset, pct_inflation.drop(columns=['Time']), on=['Year', 'Quarter'], how='inner')
+        merged_df2['Datetime'] = merged_df2['Year'].astype(str) + merged_df2['Quarter']
+        inf = merged_df2[inflation_tag]
+        datas = []
+
+        if asset_tag == "ALL":
+            for i, asset in enumerate(asset_pct):
+                prop = merged_df2[[asset, 'Datetime']].copy()
+                prop['Proportion'] = prop[asset] / inf
+                prop = prop.drop(columns=[asset])
+                prop['text'] = 'The proportion of all assets vs. '  + inflation_tag
+                prop['label'] = asset
+                datas.append(ColumnDataSource(prop))
+        else:
+            merged_df2['Proportion'] = merged_df2[asset_tag] / merged_df2[inflation_tag].replace({0: np.nan})
+            data = merged_df2[['Datetime', 'Proportion']].copy()
+            data['text'] = 'The proportion of ' + asset_tag + ' and ' + inflation_tag
+            data['label'] = asset_tag
+            datas.append(ColumnDataSource(data))
 
     return datas
 
@@ -392,8 +417,9 @@ def draw_line_chart_prop(source_prop):
 
     p.xaxis.axis_label = 'Datetime'
     p.yaxis.axis_label = 'Proportion'
-    p.legend.label_text_font_size = "10pt"
+    p.legend.label_text_font_size = "8pt"
     p.legend.location = "bottom_left"
+    p.legend.background_fill_alpha = 0
 
     p.add_layout(label)
 
@@ -402,32 +428,40 @@ def draw_line_chart_prop(source_prop):
     return p
 
 
+order_tag = 'First Order'
 asset_tag = 'ALL'
 inflation_tag = 'Core_CPI_Change'
 
-_source = create_source_proportion(asset_tag, inflation_tag)
+_source = create_source_proportion(order_tag, asset_tag, inflation_tag)
 
 m = draw_line_chart_prop(_source)
 
+select_order = Select(title="Select Order:", value="First Order", options=["First Order", "Second Order"])
 select_asset2 = Select(title="Select Asset:", value="ALL", options=asset_pct + ["ALL"])
 select_inflation2 = Select(title="Select Inflation:", value=inflation_pct[0], options=inflation_pct)
 
-layout4 = row(select_asset2, select_inflation2)
+layout4 = row(select_order, select_asset2, select_inflation2)
 layout5 = row(m)
 
 
+def update_order(attr, old, new):
+    order_tag = new
+    source = create_source_proportion(order_tag, asset_tag, inflation_tag)
+    layout5.children[0] = draw_line_chart_prop(source)
+
 def update_asset(attr, old, new):
     asset_tag = new
-    _source = create_source_proportion(asset_tag, inflation_tag)
-    layout4.children[0] = draw_line_chart_prop(_source)
+    _source = create_source_proportion(order_tag, asset_tag, inflation_tag)
+    layout5.children[0] = draw_line_chart_prop(_source)
 
 
 def update_inflation(attr, old, new):
     inflation_tag = new
-    _source = create_source_proportion(asset_tag, inflation_tag)
+    _source = create_source_proportion(order_tag, asset_tag, inflation_tag)
     layout5.children[0] = draw_line_chart_prop(_source)
 
 
+select_order.on_change('value', update_order)
 select_asset2.on_change('value', update_asset)
 select_inflation2.on_change('value', update_inflation)
 
