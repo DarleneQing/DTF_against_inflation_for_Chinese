@@ -3,6 +3,10 @@
 This is the group assignment of Digital Tools for Finance from University of Zurich
 
 Collaboration with: 
+- [Haouye Shi](https://github.com/EllaHaoyueShi)
+- [Yuqing Huang](https://github.com/DarleneQing)
+- [Yujue Chen](https://github.com/B623-creator)
+- [Yingjia Zhu](https://github.com/zyjimn)
 
 
 ## Research Question:
