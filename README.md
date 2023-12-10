@@ -39,7 +39,7 @@ If you need to install or update these tools, please refer to the following link
 
 ### Docker Container Setup
 - Make sure your Docker Server is running
-- If you are using an IDE that can run thr block directly without mannually open an termianl on your computer
+- If you are using an IDE that can run the block directly without mannually open an termianl on your computer
 #### Pulling the Docker Image
 To use our Dockerized Visualization Tool, start by pulling the image from the Docker Hub. In your command line interface, run
 ```bash
