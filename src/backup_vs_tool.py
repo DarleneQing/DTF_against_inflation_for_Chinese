@@ -13,7 +13,7 @@ df_asset = pd.read_pickle("data/asset_subset.pkl")
 df_inflation = pd.read_pickle("data/inflation_subset.pkl")
 pct_asset = pd.read_pickle("data/pct_asset.pkl")
 pct_inflation = pd.read_pickle("data/pct_inflation.pkl")
-data = pd.read_pickle("data/data_only")
+data = pd.read_pickle("data/data_only.pkl")
 
 # original data line chart
 # Full palette
