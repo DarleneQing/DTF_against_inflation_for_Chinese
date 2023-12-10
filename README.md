@@ -55,7 +55,7 @@ Then, start the Docker container:
 docker run -p 8888:8888 my_bokeh
 ```
 
-Now your Jupyter notebook server should start running, you can access it at: 'http://localhost:8888'
+Now your Jupyter notebook server should start running, you can access it at: 'http://localhost:8888/tree'
 
 ### Exploring the Visualization Tool
 Open the file 'Hedge_Against_inflation_Tool.ipynb' in Jupyter Notebook. This notebook is your main interface for using our visualization tool. Follow the embedded comments and instructions to start to know more about our research. Enjoy!
