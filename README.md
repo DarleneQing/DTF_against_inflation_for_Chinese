@@ -38,6 +38,8 @@ If you need to install or update these tools, please refer to the following link
 - [For Docker](https://www.docker.com/get-started/)
 
 ### Docker Container Setup
+- Make sure your Docker Server is running
+- If you are using an IDE that can run thr block directly without mannually open an termianl on your computer
 #### Pulling the Docker Image
 To use our Dockerized Visualization Tool, start by pulling the image from the Docker Hub. In your command line interface, run
 ```bash
@@ -45,16 +47,7 @@ docker pull darleneqing/my_bokeh
 ```
 
 #### Running the Docker Container
-Then navigate to the working directory to the file that saves your cloned git repository
-```bash
-cd <Disk:\your_git_clone_file_path>  #(Replace the <Disk:\your_git_clone_file_path> of your choice)
-```
-In case of Mac:
-```bash
-cd <path/to/directory>
-```
-
-Then, start the Docker container:
+Start the Docker container:
 ```bash
 docker run -p 8888:8888 darleneqing/my_bokeh
 ```
@@ -68,8 +61,16 @@ Folder 'data' contains all the data file you need for running the visualization 
 Open the file 'Hedge_Against_inflation_Tool.ipynb' in Jupyter Notebook or JupyterLab. This notebook is your main interface for using our visualization tool. Follow the embedded comments and instructions to start to know more about our research. Enjoy!
 
 ### Troubleshooting Docker Image Issues
+Open a command line interface on your computer, navigate to the working directory to the file that saves your cloned git repository
+```bash
+cd <Disk:\your_git_clone_file_path>  #(Replace the <Disk:\your_git_clone_file_path> of your choice)
+```
+In case of Mac:
+```bash
+cd <path/to/directory>
+```
 **Solution One**
-1. Navigate to the directory of *DTF_against_inflation_for_Chinese*, run in command line interface:
+1. Make sure you are under directory of *DTF_against_inflation_for_Chinese*, run in command line interface:
 ```bash
 pip install -r requirements.txt
 ```
