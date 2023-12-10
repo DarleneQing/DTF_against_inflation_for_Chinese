@@ -3,6 +3,10 @@
 This is the group assignment of Digital Tools for Finance from University of Zurich
 
 Collaboration with: 
+- [Haouye Shi](https://github.com/EllaHaoyueShi)
+- [Yuqing Huang](https://github.com/DarleneQing)
+- [Yujue Chen](https://github.com/B623-creator)
+- [Yingjia Zhu](https://github.com/zyjimn)
 
 
 ## Research Question:
@@ -52,13 +56,16 @@ cd <path/to/directory>
 
 Then, start the Docker container:
 ```bash
-docker run -p 8888:8888 my_bokeh
+docker run -p 8888:8888 darleneqing/my_bokeh
 ```
 
-Now your Jupyter notebook server should start running, you can access it at: 'http://localhost:8888/tree'
+Now your Jupyter notebook server should start running, you can access it at: 'http://localhost:8888/tree' <br>
+Or Open JupyterLab at 'http://localhost:8888/lab'
 
 ### Exploring the Visualization Tool
-Open the file 'Hedge_Against_inflation_Tool.ipynb' in Jupyter Notebook. This notebook is your main interface for using our visualization tool. Follow the embedded comments and instructions to start to know more about our research. Enjoy!
+After entering the jupyter server, you will find the visualization under folder 'src', named 'Hedge_Against_inflation_Tool.ipynb'. <br>
+Folder 'data' contains all the data file you need for running the visualization and reproduce our entire research. <br>
+Open the file 'Hedge_Against_inflation_Tool.ipynb' in Jupyter Notebook or JupyterLab. This notebook is your main interface for using our visualization tool. Follow the embedded comments and instructions to start to know more about our research. Enjoy!
 
 ### Troubleshooting Docker Image Issues
 **Solution One**
@@ -72,7 +79,7 @@ pip install -r requirements.txt
 ```bash
 jupyter notebook --port=8888
 ```
-3. Open the file 'Hedge_Against_inflation_Tool.ipynb' in jupyter botebook.
+3. Open the file 'Hedge_Against_inflation_Tool.ipynb' under folder 'src' in jupyter botebook.
 
 **Solution Two** <br>
 *In case your jupyter notebook is still not working* <br>
@@ -83,7 +90,7 @@ pip install -r requirements.txt
 ```
 3. In terminal again, run
 ```bash
-bokeh serve --show backup_vs_tool.py
+bokeh serve --show src/backup_vs_tool.py
 ```
 
 
