@@ -12,7 +12,8 @@ Collaboration with:
 ## Research Question:
 What type of assets can provide effective protection against inflation for Chinese people?
 
-Brief description: We collected data on the return rates of financial and non-financial assets, as well as the core inflation rate in China from 2010 to 2020. Initially, we employed visualization tools to observe the trends in data variations over the decade, revealing significant fluctuations in the quarterly and annual change rates of various assets. Subsequently, we conducted Ordinary Least Squares (OLS) regression analyses to examine the hedging effects of assets against inflation. Our findings indicate that, statistically speaking, there are no assets in the Chinese market that exhibit significant hedging capabilities against inflation. Finally, we ensured the robustness of our model by conducting tests to verify the assumptions of the OLS method. Enjoy our exploration!
+Brief description: We collected data on the return rates of financial and non-financial assets, as well as the core inflation rate in China from 2010 to 2020. Initially, we employed visualization tools to observe the trends in data variations over the decade, revealing significant fluctuations in the quarterly and annual change rates of various assets. Subsequently, we conducted Ordinary Least Squares (OLS) regression analyses to examine the hedging effects of assets against inflation. Our findings indicate that, statistically speaking, there are no assets in the Chinese market that exhibit significant hedging capabilities against inflation. Finally, we ensured the robustness of our model by conducting tests to verify the assumptions of the OLS method. 
+You can access our report at main brunch-Report.pdf. Enjoy our exploration!
 
 
 ## Guide To Building The Visualization Tool
